@@ -1,0 +1,12 @@
+.wave-container {
+  background: #eee;
+}
+
+.wave-container > svg {
+  display: block;
+}
+
+.landing-title {
+  margin-top: 4em;
+  text-align: center;
+}
