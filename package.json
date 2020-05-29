@@ -12,9 +12,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run freeze",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "freeze": "cd server && pip freeze > requirements.txt",
+    "server": "cd server && venv/bin/flask run --no-debugger",
+    "dev": "concurrently \"npm start\" \"npm run server\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
   }
 }
