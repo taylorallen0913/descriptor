@@ -5,11 +5,7 @@ import './styles.css';
 
 const NavBar = () => {
   return (
-    <Navbar
-      fixed="top"
-      transparent={true}
-      style={{ backgroundColor: 'transparent' }}
-    >
+    <Navbar transparent={true} style={{ backgroundColor: 'transparent' }}>
       <Navbar.Menu>
         <Navbar.Item className="nav-title">
           <Link to="/" style={{ color: '#F1F1F1' }}>

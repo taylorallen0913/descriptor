@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar/NavBar';
+import Navbar from './components/Navbar';
 
 import Landing from './pages/Landing';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Switch>
         <Route path="/" component={Landing} />
       </Switch>
+      <Footer />
     </Router>
   );
 };
