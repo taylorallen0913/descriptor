@@ -24,5 +24,5 @@ cd server && pip install -r requirements.txt && cd ..
 
 Start dev server
 ```
-yarn dev
+npm run dev
 ```
