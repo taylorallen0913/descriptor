@@ -11,6 +11,9 @@
     "import/prefer-default-export": 0,
     "no-underscore-dangle": 0,
     "react/jsx-boolean-value": 0,
-    "react/jsx-no-target-blank": 0
+    "react/jsx-no-target-blank": 0,
+    "no-unused-vars": 1,
+    "react/self-closing-comp": 1,
+    "react/no-array-index-key": 0
   }
 }

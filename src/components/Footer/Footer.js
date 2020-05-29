@@ -9,7 +9,6 @@ const Footer = () => {
         Taylor Allen 2020
         <a
           href="https://github.com/taylorallen0913/descriptor"
-          target="_blank"
           style={{ marginLeft: '0.5em' }}
         >
           Source Code

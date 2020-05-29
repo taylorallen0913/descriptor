@@ -1,16 +1,14 @@
 import React from 'react';
-import './styles.css';
-import Typist from 'react-typist';
 import LandingSVG from '../../components/LandingSVG';
+import Typer from '../../components/Typer';
+import './styles.css';
 
 const Landing = () => {
   return (
     <div>
       <div className="wave-container">
         <h1 className="landing-title">
-          <Typist avgTypingDelay={50} startDelay={1000}>
-            Quantifying the internet into understandable bits.
-          </Typist>
+          <Typer />
         </h1>
         <div style={{ marginTop: '5%' }} />
         <LandingSVG />
