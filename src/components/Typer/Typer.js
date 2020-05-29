@@ -14,7 +14,7 @@ const Typer = () => {
   return (
     <div>
       {count ? (
-        <Typist avgTypingDelay={70} startDelay={2000}>
+        <Typist avgTypingDelay={40} startDelay={2000}>
           {statements.map((elem, i) => (
             <span key={i}>
               {elem}
@@ -24,7 +24,7 @@ const Typer = () => {
           <Typist.Backspace count={20} delay={5000} />
         </Typist>
       ) : (
-        ''
+        'Descriptor'
       )}
     </div>
   );
