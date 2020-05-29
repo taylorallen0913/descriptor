@@ -1,11 +1,9 @@
 .nav-title {
-  color: black !important;
   font-size: 2em;
-  margin-left: 10em;
-  font-weight: bold;
+  margin-left: 30%;
 }
 
 .nav-links {
   margin-top: 5px;
-  margin-left: 70%;
+  margin-left: 20%;
 }

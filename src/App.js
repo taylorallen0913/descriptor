@@ -12,9 +12,7 @@ const App = () => {
         <Navbar />
       </header>
       <Switch>
-        <div style={{ marginTop: '1.8%' }}>
-          <Route path="/" component={Landing} />
-        </div>
+        <Route path="/" component={Landing} />
       </Switch>
     </Router>
   );

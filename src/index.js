@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
 
+import 'react-typist/dist/Typist.css';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 
 ReactDOM.render(
