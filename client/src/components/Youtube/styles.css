@@ -1,5 +1,5 @@
 .youtube-form {
-  margin-top: 3%;
+  margin-top: 2%;
   margin-left: 20%;
   text-align: center;
   display: inline-block;
@@ -17,7 +17,7 @@ select {
   box-sizing: border-box;
 }
 
-.youtube-form > input[type='submit'] {
+.youtube-form > button {
   width: 100%;
   background-color: #4caf50;
   color: white;
@@ -28,7 +28,7 @@ select {
   cursor: pointer;
 }
 
-.youtube-form > input[type='submit']:hover {
+.youtube-form > button:hover {
   background-color: #45a049;
 }
 

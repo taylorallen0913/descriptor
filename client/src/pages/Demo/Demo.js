@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Tabs } from 'react-bulma-components';
 import Navbar from '../../components/Navbar';
 
@@ -13,11 +13,11 @@ const Demo = () => {
   return (
     <div className="demo">
       <Navbar type="about" />
-      <h1 className="demo-header">Select method </h1>
+      <h1 className="demo-header">Select method</h1>
       <Tabs
         type="toggle-rounded"
         align={'centered'}
-        style={{ marginTop: '1%' }}
+        style={{ marginTop: '0.5%' }}
       >
         <Tabs.Tab active={method === 1} onClick={() => setMethod(1)}>
           Youtube
@@ -29,6 +29,7 @@ const Demo = () => {
           Text
         </Tabs.Tab>
       </Tabs>
+
       {method === 1 ? (
         <Youtube />
       ) : method === 2 ? (
