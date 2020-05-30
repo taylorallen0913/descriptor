@@ -1,0 +1,37 @@
+.youtube-form {
+  margin-top: 3%;
+  margin-left: 20%;
+  text-align: center;
+  display: inline-block;
+  width: 60%;
+}
+
+.youtube-form > input[type='text'],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.youtube-form > input[type='submit'] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.youtube-form > input[type='submit']:hover {
+  background-color: #45a049;
+}
+
+.youtube-link {
+  text-align: center;
+}

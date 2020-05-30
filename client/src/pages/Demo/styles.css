@@ -1,0 +1,11 @@
+.demo {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.demo-header {
+  text-align: center;
+  margin-top: 3%;
+  font-size: 2.5em;
+}
