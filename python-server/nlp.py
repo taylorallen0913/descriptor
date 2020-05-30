@@ -14,23 +14,21 @@ def text_preprocessing(sentences):
     clean_sentences = []
     for sentence in sentences:
         clean_sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
-    clean_sentences.pop()  # getting rid of the empty list at the end
+    clean_sentences.pop()
 
     return clean_sentences
 
 
 def compare_sentences(sentence1, sentence2):
     stop_words = set(stopwords.words('english'))
-    # make a list of all the unique words between the two sentences
-    # make a vector holds how each word has a specific entity in the list
-    # from the vector, use cosine_distance to find how different these vectors are
 
     sentence1 = [sentence.lower() for sentence in sentence1]
     sentence2 = [sentence.lower() for sentence in sentence2]
 
-    # get a list of all unique words
+    # Make list of all unique words
     all_unique_words = list(set(sentence1+sentence2))
 
+    # Create vector to hold word significance
     vector1 = [0]*len(all_unique_words)
     vector2 = [0]*len(all_unique_words)
 
@@ -44,14 +42,11 @@ def compare_sentences(sentence1, sentence2):
             continue
         vector2[all_unique_words.index(i)] += 1
 
-    # https://kite.com/python/docs/nltk.cluster.cosine_distance
-    # cosine similarity is a mathematical term used to compute the angle between two documents where each word is on it's own dimension
-    # cosine distance is 1-cosine_similarity, below we are calculating cosine similarity
+    # Compare difference with cosine distance function
     return 1 - cosine_distance(vector1, vector2)
 
 
 def build_similarity_matrix(sentences):
-    # go through and a build a matrix that is sentences.length by sentences.length
     similarity_matrix = np.zeros((len(sentences), len(sentences)))
 
     for counter1, sentence1 in enumerate(sentences):
@@ -66,26 +61,26 @@ def build_similarity_matrix(sentences):
 
 def generate_summary(text):
     nltk.download('stopwords')
-    # generate the sentences from the existing paragraph
+
+    # Split text into tokenized sentences
     sentences = split_text_into_sentences(text)
 
-    # generate a similarity matrix
+    # Generate similarity matrix
     similarity_matrix = build_similarity_matrix(sentences)
 
-    # rank the sentences in the similarity matrix
+    # Rank the sentences
     sentence_similarity_graph = nx.from_numpy_array(similarity_matrix)
     scores = nx.pagerank(sentence_similarity_graph)
 
-    # organize the scores from top to bottom
     ranked_sentence = sorted(
         ((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
 
     summarize_text = []
 
-    for i in range(min(5, len(sentences))):
+    for i in range(min(4, len(sentences))):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
 
-    summary = ". ".join(summarize_text)+"."
+    summary = ". ".join(summarize_text) + "."
     return summary
 
 

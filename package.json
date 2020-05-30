@@ -7,7 +7,7 @@
     "server": "cd python-server && venv/bin/flask run --no-debugger",
     "client": "npm start --prefix client",
     "freeze": "cd python-server && pip freeze > requirements.txt",
-    "dev": "concurrently \"npm run python-server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {},
   "devDependencies": {

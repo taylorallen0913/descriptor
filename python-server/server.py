@@ -22,7 +22,7 @@ def root():
     return "Hello world!"
 
 
-@app.route('/transcribe/<string:video_id>', methods=['GET', 'POST'])
+@app.route('/transcribe/youtube/<string:video_id>', methods=['GET', 'POST'])
 def transcribe(video_id):
 
     # Get youtube video from id and download it
