@@ -4,24 +4,13 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "express-server": "nodemon server.js",
     "python-server": "cd python-server && venv/bin/flask run --no-debugger",
     "client": "npm start --prefix client",
+    "freeze": "cd python-server && pip freeze > requirements.txt",
     "dev": "concurrently \"npm run python-server\" \"npm run client\""
   },
-  "dependencies": {
-    "@google-cloud/speech": "^3.6.0",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mkdirp": "^1.0.4",
-    "mp3-to-wav": "^0.1.11",
-    "replace-ext": "^2.0.0",
-    "uuidv4": "^6.1.0",
-    "youtube-mp3-downloader": "^0.6.7"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "concurrently": "^5.2.0"
   }
 }
