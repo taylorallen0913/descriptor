@@ -1,7 +1,9 @@
 import React from 'react';
 import LandingSVG from '../../components/LandingSVG';
-import './styles.css';
 import Typer from '../../components/Typer';
+import About from '../../components/About';
+
+import './styles.css';
 
 const Landing = () => {
   return (
@@ -14,6 +16,7 @@ const Landing = () => {
         <LandingSVG />
       </div>
       <div style={{ margin: '10%' }} />
+      <About />
     </div>
   );
 };

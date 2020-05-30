@@ -1,0 +1,27 @@
+.about-title {
+  text-align: center;
+  font-size: 3em;
+}
+
+.about-subtitle {
+  text-align: center;
+  color: #7e7e7e;
+  margin-top: 1em;
+  font-size: 1.5em;
+}
+
+.about-description {
+  margin-top: 20%;
+}
+
+.about-header {
+  text-align: center;
+  color: #1b4965;
+  font-size: 2em;
+}
+
+.about-content {
+  text-align: center;
+  color: #4f5d75;
+  margin: 2% 10% 0 10%;
+}
