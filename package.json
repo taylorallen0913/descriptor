@@ -4,7 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "python-server": "cd python-server && venv/bin/flask run --no-debugger",
+    "server": "cd python-server && venv/bin/flask run --no-debugger",
     "client": "npm start --prefix client",
     "freeze": "cd python-server && pip freeze > requirements.txt",
     "dev": "concurrently \"npm run python-server\" \"npm run client\""

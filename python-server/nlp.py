@@ -89,7 +89,7 @@ def generate_summary(text):
     return summary
 
 
-def format_text(paragraph):
+def format_summary(paragraph):
     # Split by sentence
     split_paragraph = paragraph.split('.')[:-1]
 
@@ -101,4 +101,4 @@ def format_text(paragraph):
         formatted += "- " + split_paragraph[sentence_number].strip() + "\n"
         sentence_number += 1
 
-    print(formatted)
+    return formatted
