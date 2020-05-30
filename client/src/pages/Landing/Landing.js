@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import LandingSVG from '../../components/LandingSVG';
 import Typer from '../../components/Typer';
 import About from '../../components/About';
+import Navbar from '../../components/Navbar';
 
 import './styles.css';
 
 const Landing = () => {
   return (
     <div>
+      <Navbar />
       <div className="wave-container">
         <h1 className="landing-title">
           <Typer />

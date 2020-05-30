@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bulma-components';
 import './styles.css';
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <Navbar transparent={true} style={{ backgroundColor: 'transparent' }}>
       <Navbar.Menu>
@@ -13,12 +13,11 @@ const NavBar = () => {
           </Link>
         </Navbar.Item>
         <Navbar.Container className="nav-links">
-          <Navbar.Item style={{ color: '#DCDCDC', marginTop: '5%' }}>
-            About
-          </Navbar.Item>
-          <div style={{ marginLeft: '30%' }} />
-          <Navbar.Item style={{ color: '#DCDCDC', marginTop: '5%' }}>
-            Try it out
+          <div style={{ marginLeft: '80%' }} />
+          <Navbar.Item style={{ marginTop: '5%' }}>
+            <Link to="/demo" style={{ color: '#DCDCDC' }}>
+              Try it out
+            </Link>
           </Navbar.Item>
         </Navbar.Container>
       </Navbar.Menu>
