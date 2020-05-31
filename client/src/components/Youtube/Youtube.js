@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import TextOutput from '../TextOutput';
-import { Progress } from 'react-bulma-components';
+import { Progress, Button } from 'react-bulma-components';
+import getThumb from 'video-thumbnail-url';
 
 import './styles.css';
 
@@ -11,6 +12,10 @@ const Youtube = () => {
   const [outputLoaded, setOutputLoaded] = useState(false);
   const [output, setOutput] = useState();
   const [error, setError] = useState();
+  const [askCorrectVideo, setAskCorrectVideo] = useState(false);
+  const [hiddenLink, setHiddenLink] = useState('');
+
+  const [thumbnail, setThumbnail] = useState('');
 
   const isLinkValid = () => {
     let length = -1;
@@ -22,18 +27,30 @@ const Youtube = () => {
 
   const onSubmitLink = async () => {
     if (isLinkValid()) {
+      setError('');
+      setHiddenLink(link);
       setLink('');
-      setLoading(true);
-      const id = link.split('=')[1];
-      axios
-        .post(`http://localhost:8000/transcribe/youtube/${id}`)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+
+      setAskCorrectVideo(true);
+
+      const thumbnailURL = await getThumb(link);
+      setThumbnail(thumbnailURL);
     } else {
       // Return error here
       setError('Please input a valid link.');
       console.log('error');
     }
+  };
+
+  const onContinue = () => {
+    setThumbnail('');
+    setAskCorrectVideo(false);
+    setLoading(true);
+    const id = hiddenLink.split('=')[1];
+    axios
+      .post(`http://localhost:8000/transcribe/youtube/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -50,9 +67,19 @@ const Youtube = () => {
 
         <button onClick={() => onSubmitLink()}>Submit</button>
       </div>
-      <div style={{ marginBottom: '2%' }} />
+      <div style={{ marginBottom: '1.5%' }} />
       {loading ? (
         <Progress size="small" style={{ width: '40%', marginLeft: '30%' }} />
+      ) : null}
+      {thumbnail ? <img src={thumbnail} className="center" /> : null}
+      {askCorrectVideo ? (
+        <Button
+          color="info"
+          className="continue-button"
+          onClick={() => onContinue()}
+        >
+          Continue
+        </Button>
       ) : null}
       {outputLoaded ? <TextOutput text="hello\nworld" /> : null}
       <h1 className="youtube-error">{error}</h1>

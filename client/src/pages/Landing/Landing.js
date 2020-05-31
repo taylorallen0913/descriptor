@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import LandingSVG from '../../components/LandingSVG';
 import Typer from '../../components/Typer';
 import About from '../../components/About';

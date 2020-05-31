@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Columns,
-  Card,
-  Media,
-  Content,
-  Image,
-  Heading,
-} from 'react-bulma-components';
+import { Columns } from 'react-bulma-components';
 
 import './styles.css';
 
@@ -17,7 +10,7 @@ const About = () => {
         The world we live in is cluttered with countless information.
       </h1>
       <p className="about-subtitle">
-        Descriptor extracts and organizes the most important information
+        Descriptor extracts and organizes the most important pieces
       </p>
       <Columns gapless>
         <Columns.Column>
