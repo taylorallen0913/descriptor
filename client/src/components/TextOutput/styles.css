@@ -6,5 +6,10 @@
 }
 
 .text-output-content {
-  padding: 0.8%;
+  padding: 3% 0 0 5%;
+}
+
+.bullet {
+  list-style-type: circle;
+  line-height: 2.5em;
 }

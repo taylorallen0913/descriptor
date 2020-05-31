@@ -9,13 +9,14 @@ import './styles.css';
 const Youtube = () => {
   const [link, setLink] = useState('');
   const [loading, setLoading] = useState(false);
-  const [outputLoaded, setOutputLoaded] = useState(false);
-  const [output, setOutput] = useState();
   const [error, setError] = useState();
   const [askCorrectVideo, setAskCorrectVideo] = useState(false);
   const [hiddenLink, setHiddenLink] = useState('');
-
   const [thumbnail, setThumbnail] = useState('');
+
+  const [taskText, setTaskText] = useState('');
+  const [taskNumber, setTaskNumber] = useState(0);
+  const [output, setOutput] = useState();
 
   const isLinkValid = () => {
     let length = -1;
@@ -42,15 +43,54 @@ const Youtube = () => {
     }
   };
 
-  const onContinue = () => {
+  const onContinue = async () => {
+    // TEST URL:
+    // https://www.youtube.com/watch?v=3IVfdPYV3e0
+
     setThumbnail('');
     setAskCorrectVideo(false);
     setLoading(true);
     const id = hiddenLink.split('=')[1];
-    axios
-      .post(`http://localhost:8000/transcribe/youtube/${id}`)
-      .then((res) => console.log(res))
+
+    // Download video
+    setTaskText('Downloading video...');
+    await axios
+      .post('http://localhost:5000/api/youtube/download-video/', {
+        id,
+      })
       .catch((err) => console.log(err));
+
+    setTaskText('Uploading video to GCP...');
+    setTaskNumber(1);
+    // Upload video
+    await axios
+      .post('http://localhost:5000/api/youtube/upload-video/', {
+        bucket_name: 'descriptor',
+        id,
+      })
+      .catch((err) => console.log(err));
+
+    setTaskText('Transcribing video...');
+    setTaskNumber(2);
+    // Transcribe video
+    await axios
+      .post('http://localhost:5000/api/youtube/transcribe/', {
+        id,
+      })
+      .then(async (res) => {
+        // Format output
+        setTaskText('Getting output...');
+        await axios
+          .post('http://localhost:5000/api/youtube/format/', {
+            transcript: res.data,
+          })
+          .then((res) => setOutput(res.data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+
+    setLoading(false);
+    setTaskText('');
   };
 
   return (
@@ -69,7 +109,33 @@ const Youtube = () => {
       </div>
       <div style={{ marginBottom: '1.5%' }} />
       {loading ? (
-        <Progress size="small" style={{ width: '40%', marginLeft: '30%' }} />
+        <div>
+          <div className="tasks">
+            <div>
+              <h1 style={taskNumber === 0 ? { color: '#0077B6' } : null}>
+                Download video
+              </h1>
+            </div>
+            <div className="arrow-icon">
+              <ion-icon size="small" name="arrow-forward-outline" />
+            </div>
+            <div>
+              <h1 style={taskNumber === 1 ? { color: '#0077B6' } : null}>
+                Upload video
+              </h1>
+            </div>
+            <div className="arrow-icon">
+              <ion-icon size="small" name="arrow-forward-outline" />
+            </div>
+            <div>
+              <h1 style={taskNumber === 2 ? { color: '#0077B6' } : null}>
+                Transcribe video
+              </h1>
+            </div>
+          </div>
+          <h1 className="task-text">{taskText}</h1>
+          <Progress size="medium" style={{ width: '40%', marginLeft: '30%' }} />
+        </div>
       ) : null}
       {thumbnail ? <img src={thumbnail} className="center" /> : null}
       {askCorrectVideo ? (
@@ -81,7 +147,7 @@ const Youtube = () => {
           Continue
         </Button>
       ) : null}
-      {outputLoaded ? <TextOutput text="hello\nworld" /> : null}
+      {output ? <TextOutput output={output.notes} /> : null}
       <h1 className="youtube-error">{error}</h1>
     </div>
   );

@@ -77,7 +77,7 @@ def generate_summary(text):
 
     summarize_text = []
 
-    for i in range(min(4, len(sentences))):
+    for i in range(min(5, len(sentences))):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     summary = ". ".join(summarize_text) + "."
@@ -93,7 +93,7 @@ def format_summary(paragraph):
     # Strip whitespace from each sentence and add to formatted result
     sentence_number = 0
     for sentence in split_paragraph:
-        formatted += "- " + split_paragraph[sentence_number].strip() + "\n"
+        formatted += split_paragraph[sentence_number].strip() + "\n"
         sentence_number += 1
 
     return formatted[:-1]

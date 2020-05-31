@@ -1,11 +1,18 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bulma-components';
 import './styles.css';
 
 const NavBar = (props) => {
   return (
-    <Navbar transparent={true} style={{ backgroundColor: 'transparent' }}>
+    <Navbar
+      transparent={true}
+      style={
+        props.type === 'about'
+          ? { backgroundColor: '#f2f2f2' }
+          : { backgroundColor: 'transparent' }
+      }
+    >
       <Navbar.Menu>
         <Navbar.Item className="nav-title">
           <Link

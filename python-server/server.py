@@ -17,7 +17,7 @@ import networkx as nx
 from nlp import generate_summary, format_summary
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 @app.route('/')
@@ -36,7 +36,7 @@ def download_video():
 
 @app.route('/api/youtube/upload-video/', methods=['POST'])
 def upload_video():
-    bucket_name = request.get_json()['bucket-name']
+    bucket_name = request.get_json()['bucket_name']
     id = request.get_json()['id']
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(bucket_name)
