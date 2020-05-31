@@ -96,4 +96,4 @@ def format_summary(paragraph):
         formatted += "- " + split_paragraph[sentence_number].strip() + "\n"
         sentence_number += 1
 
-    return formatted
+    return formatted[:-1]
