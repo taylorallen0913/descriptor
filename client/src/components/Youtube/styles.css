@@ -35,3 +35,8 @@ select {
 .youtube-link {
   text-align: center;
 }
+
+.youtube-error {
+  text-align: center;
+  color: red;
+}

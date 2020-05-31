@@ -19,6 +19,7 @@ const Landing = () => {
       </div>
       <div style={{ margin: '10%' }} />
       <About />
+      <div style={{ marginBottom: '40%' }} />
     </div>
   );
 };
