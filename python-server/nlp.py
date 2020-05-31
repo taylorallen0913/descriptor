@@ -63,7 +63,10 @@ def generate_summary(text):
     nltk.download('stopwords')
 
     # Split text into tokenized sentences
-    sentences = split_text_into_sentences(text)
+    try:
+        sentences = split_text_into_sentences(text)
+    except:
+        print("ERROR")
 
     # Generate similarity matrix
     similarity_matrix = build_similarity_matrix(sentences)
@@ -77,7 +80,7 @@ def generate_summary(text):
 
     summarize_text = []
 
-    for i in range(min(5, len(sentences))):
+    for i in range(min(4, len(sentences))):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     summary = ". ".join(summarize_text) + "."
@@ -86,14 +89,16 @@ def generate_summary(text):
 
 def format_summary(paragraph):
     # Split by sentence
-    split_paragraph = paragraph.split('.')[:-1]
+    try:
+        split_paragraph = paragraph.split('.')[:-1]
+        formatted = ''
 
-    formatted = ''
-
-    # Strip whitespace from each sentence and add to formatted result
-    sentence_number = 0
-    for sentence in split_paragraph:
-        formatted += split_paragraph[sentence_number].strip() + "\n"
-        sentence_number += 1
-
-    return formatted[:-1]
+        # Strip whitespace from each sentence and add to formatted result
+        sentence_number = 0
+        for sentence in split_paragraph:
+            formatted += split_paragraph[sentence_number].strip() + "\n"
+            sentence_number += 1
+        return formatted[:-1]
+    except:
+        print('HERE')
+        return "ERROR"

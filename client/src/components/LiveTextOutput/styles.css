@@ -1,0 +1,26 @@
+.input-box {
+  box-shadow: 3px 3px 5px 6px #ccc;
+  width: 95%;
+  margin-left: 2.5%;
+  height: 654px;
+}
+
+.output-box {
+  box-shadow: 3px 3px 5px 6px #ccc;
+  width: 95%;
+  margin-left: 2.5%;
+  height: 654px;
+}
+
+.text-header {
+  text-align: center;
+  margin-bottom: 1%;
+  font-size: 2.3em;
+}
+
+.text-bullet {
+  list-style-type: circle;
+  padding-top: 5%;
+  margin: 0 0 0 5%;
+  line-height: 2.5em;
+}

@@ -17,9 +17,9 @@ const Landing = () => {
         <div style={{ marginTop: '5%' }} />
         <LandingSVG />
       </div>
-      <div style={{ margin: '10%' }} />
+      <div style={{ margin: '15%' }} />
       <About />
-      <div style={{ marginBottom: '40%' }} />
+      <div style={{ marginBottom: '20%' }} />
     </div>
   );
 };

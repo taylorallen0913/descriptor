@@ -95,18 +95,20 @@ const Youtube = () => {
 
   return (
     <div>
-      <div className="youtube-form">
-        <h1 className="youtube-link">Enter Youtube Link</h1>
-        <input
-          type="text"
-          id="link-input"
-          placeholder="Youtube Link"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-        />
+      {output ? null : (
+        <div className="youtube-form">
+          <h1 className="youtube-link">Enter Youtube Link</h1>
+          <input
+            type="text"
+            id="link-input"
+            placeholder="Youtube Link"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+          />
 
-        <button onClick={() => onSubmitLink()}>Submit</button>
-      </div>
+          <button onClick={() => onSubmitLink()}>Submit</button>
+        </div>
+      )}
       <div style={{ marginBottom: '1.5%' }} />
       {loading ? (
         <div>

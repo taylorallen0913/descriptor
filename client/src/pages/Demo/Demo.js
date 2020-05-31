@@ -3,8 +3,7 @@ import { Tabs } from 'react-bulma-components';
 import Navbar from '../../components/Navbar';
 
 import Youtube from '../../components/Youtube';
-import Upload from '../../components/Upload';
-import Text from '../../components/Text';
+import LiveTextOutput from '../../components/LiveTextOutput';
 
 import './styles.css';
 
@@ -14,7 +13,7 @@ const Demo = () => {
     <>
       <Navbar type="about" />
       <div className="demo">
-        <h1 className="demo-header">Select method</h1>
+        <h1 className="demo-header">Select Input</h1>
         <Tabs
           type="toggle-rounded"
           align={'centered'}
@@ -24,20 +23,11 @@ const Demo = () => {
             Youtube
           </Tabs.Tab>
           <Tabs.Tab active={method === 2} onClick={() => setMethod(2)}>
-            Upload
-          </Tabs.Tab>
-          <Tabs.Tab active={method === 3} onClick={() => setMethod(3)}>
             Text
           </Tabs.Tab>
         </Tabs>
 
-        {method === 1 ? (
-          <Youtube />
-        ) : method === 2 ? (
-          <Upload />
-        ) : method === 3 ? (
-          <Text />
-        ) : null}
+        {method === 1 ? <Youtube /> : method === 2 ? <LiveTextOutput /> : null}
         <div style={{ marginBottom: '30%' }} />
       </div>
     </>

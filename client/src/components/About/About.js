@@ -17,9 +17,9 @@ const About = () => {
           <div className="about-description">
             <h1 className="about-header">Focus on what matters</h1>
             <p className="about-content">
-              Descriptor uses a NLP algorithm to process text to rank the most
-              significant so you can get the most out of any piece of
-              information
+              Descriptor uses state of the art Natural Language Processing (NLP)
+              algorithm to process text to rank the most significant so you can
+              get the most out of any piece of information
             </p>
           </div>
         </Columns.Column>

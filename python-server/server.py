@@ -91,3 +91,13 @@ def format():
     }
 
     return jsonify(data)
+
+
+@app.route('/api/summary', methods=['POST'])
+def summary():
+    input = request.get_json()['input']
+    try:
+        output = generate_summary(input)
+        return output
+    except:
+        return 'ERROR'
