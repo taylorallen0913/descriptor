@@ -4,7 +4,6 @@ import { Navbar } from 'react-bulma-components';
 import './styles.css';
 
 const NavBar = (props) => {
-  console.log(props);
   return (
     <Navbar transparent={true} style={{ backgroundColor: 'transparent' }}>
       <Navbar.Menu>

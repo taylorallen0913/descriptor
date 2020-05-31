@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
-import TextOutput from '../TextOutput';
 import axios from 'axios';
+import TextOutput from '../TextOutput';
 
 import './styles.css';
 
 const Youtube = () => {
   const [link, setLink] = useState('');
-  const [processing, setProcessing] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-  const onSubmitLink = () => {
-    if (validateLink()) {
+  const isLinkValid = () => (link.split('=')[1].length === 11 ? true : false);
+  const onSubmitLink = async () => {
+    if (isLinkValid()) {
+      setLoading(true);
       const id = getLinkId();
+      axios
+        .post(`http://localhost:8000/transcribe/youtube/${id}`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     } else {
       // Return error here
+      console.log('error');
     }
   };
 
   const getLinkId = () => {
     return link.split('=')[1];
-  };
-
-  const validateLink = (id) => {
-    return link.split('=')[1].length === 11;
   };
 
   return (
@@ -39,7 +43,8 @@ const Youtube = () => {
         <button onClick={() => onSubmitLink()}>Submit</button>
       </div>
       <div style={{ marginBottom: '2%' }} />
-      {processing ? <TextOutput text="hello\nworld" /> : null}
+      {loading ? <h1>true</h1> : <h1>false</h1>}
+      {loaded ? <TextOutput text="hello\nworld" /> : null}
     </div>
   );
 };
