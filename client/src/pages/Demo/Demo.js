@@ -28,7 +28,7 @@ const Demo = () => {
         </Tabs>
 
         {method === 1 ? <Youtube /> : method === 2 ? <LiveTextOutput /> : null}
-        <div style={{ marginBottom: '30%' }} />
+        <div style={{ marginBottom: '40%' }} />
       </div>
     </>
   );

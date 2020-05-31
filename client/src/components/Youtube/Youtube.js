@@ -83,6 +83,7 @@ const Youtube = () => {
         await axios
           .post('http://localhost:5000/api/youtube/format/', {
             transcript: res.data,
+            id,
           })
           .then((res) => setOutput(res.data))
           .catch((err) => console.log(err));

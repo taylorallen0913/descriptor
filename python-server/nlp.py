@@ -80,7 +80,7 @@ def generate_summary(text):
 
     summarize_text = []
 
-    for i in range(min(4, len(sentences))):
+    for i in range(min(5, len(sentences))):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     summary = ". ".join(summarize_text) + "."

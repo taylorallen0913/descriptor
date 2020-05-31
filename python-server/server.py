@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, send_from_directory
 from flask_cors import CORS
 import speech_recognition as sr
 import subprocess
@@ -7,7 +7,7 @@ import json
 from pytube import YouTube
 from google.cloud import storage
 from google.cloud import videointelligence
-
+from fpdf import FPDF
 import nltk
 from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
@@ -18,11 +18,6 @@ from nlp import generate_summary, format_summary
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
-
-
-@app.route('/')
-def root():
-    return 'OK'
 
 
 @app.route('/api/youtube/download-video/', methods=['POST'])
@@ -76,12 +71,15 @@ def transcribe():
 @app.route('/api/youtube/format/', methods=['POST'])
 def format():
     transcript = request.get_json()['transcript']
+    id = request.get_json()['id']
 
     # Generate summary from transcript
     summary = generate_summary(transcript)
 
     # Format summary into notes form
     notes = format_summary(summary)
+
+    print(notes)
 
     # What to return back in api call
     data = {
@@ -101,3 +99,8 @@ def summary():
         return output
     except:
         return 'ERROR'
+
+
+@app.route('/api/pdf/<path:filepath>')
+def data(filepath):
+    return send_from_directory('pdfs', filepath)
